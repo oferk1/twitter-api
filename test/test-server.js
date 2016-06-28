@@ -6,8 +6,6 @@ var should = chai.should();
 
 chai.use(chaiHttp);
 
-
-
 describe('influential', function() {
     it('should list ALL influential tweeters on /influential/x GET', function(done) {
         chai.request(server)

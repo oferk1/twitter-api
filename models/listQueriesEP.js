@@ -1,20 +1,5 @@
-var tHelp= require('twitterHelpers');
-var fs = require('fs');
+var pHandler = require('persistenceHandler');
 
-exports.get = function(hashTag,cb) {
- var hashTag = '#'+hashTag;
- var fileName = tHelp.getFileName(hashTag);
- fs.readFile(fileName, handleFile);
- function handleFile(err, data) {
-  var fileData;
-  if (!err) {
-   fileData = JSON.parse(data)
-  }
-  else {
-   fileData = {};
-  }
-  var searchRes = fileData[hashTag] || {};
-  cb(searchRes);
- }
- 
- }
+exports.get = function (hashTag, cb) {
+    pHandler.read(hashTag, cb)
+}
