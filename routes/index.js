@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var fs = require('fs');
 var twitter = require('twitter');
 var config = {
     consumer_key: process.env.CONSUMER_KEY,
@@ -12,13 +12,58 @@ var config = {
 // make a client
 var twitterClient = new twitter(config);
 // pass in the search string, an options object, and a callback
-var options =  { count: 100};
-twitterClient.get('search/tweets', {q: '#haiku',result_type:'popular'}, function(error, tweets, response) {
-    console.log(tweets);
-});
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
+
+router.get('/influential/:hashTag', function(req, res, next) {
+    var hashTag = '#'+req.params.hashTag;
+    var dirName = 'storage'
+    twitterClient.get('search/tweets', {q: hashTag,result_type:'popular',count:5}, function(error, tweets, response) {
+        console.log(tweets);
+        var fileName = dirName+'/db_'+hashCode(hashTag);
+        // Read the file and send to the callback
+        fs.readFile(fileName, handleFile);
+
+// Write the callback function
+        function handleFile(err, data) {
+            var newData;
+            if (!err) {
+                newData = JSON.parse(data)
+            }
+            else{
+                newData = {};
+            }
+            newData[hashTag] = newData[hashTag] || {};
+            var userNames = "";
+            for(statusIdx in tweets.statuses){
+                userNames += tweets.statuses[statusIdx].user.name+", ";
+            }
+            var ts = new Date().getTime();
+            newData[hashTag][ts] = userNames.substring(0,userNames.length - 2);
+            var newFileData = JSON.stringify(newData);
+            fs.writeFile(fileName,newFileData , function (err) {
+                if (err) return console.log(err);
+            });
+        }
+
+    });
+    res.render('index', { title: 'Express' });
+});
+
+hashCode = function(str){
+    var hash = 0;
+    if (str.length == 0) return hash;
+    var max_files_str = "100";
+    for (i = 0; i < Math.min(str.length, max_files_str.length - 1); i++) {
+        char = str.charCodeAt(i);
+        hash = ((hash<<5)-hash)+char;
+        hash = hash & hash; // Convert to 32bit integer
+    }
+    return hash;
+}
+
 
 module.exports = router;
