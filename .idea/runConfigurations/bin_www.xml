@@ -2,6 +2,10 @@
   <configuration default="false" name="bin/www" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" path-to-js-file="bin/www" working-dir="$PROJECT_DIR$">
     <envs>
       <env name="DEBUG" value="applicaster:*" />
+      <env name="CONSUMER_KEY" value="eziqcYfdp6UVw7BF6R31vRq0m" />
+      <env name="CONSUMER_SECRET" value="VYT1plz73xm7mI47Y5HUEcF2CMeNrnh1d8TD0RSuD3e0YmkZha" />
+      <env name="ACCESS_TOKEN_KEY" value="747760238229655552-2QgiM4PyWuP3aWsTKgsTI63I1PYQzE5" />
+      <env name="ACCESS_TOKEN_SECRET" value="nEtyowcyfcNQNAH76F6RHz4JerbWKpwjdizwBfiXG5tVK" />
     </envs>
     <browser url="http://localhost:3000/" />
     <method />
