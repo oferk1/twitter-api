@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 var twitter = require('twitter');
+var dirName = 'storage';
 var config = {
     consumer_key: process.env.CONSUMER_KEY,
     consumer_secret: process.env.CONSUMER_SECRET,
@@ -18,13 +19,35 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/', function(req, res, next) {
+    res.render('index', { title: 'Express' });
+});
+
+router.get('/list/:hashTag', function(req, res, next) {
+    var hashTag = '#'+req.params.hashTag;
+    var fileName = getFileName(hashTag);
+    fs.readFile(fileName, handleFile);
+    function handleFile(err, data) {
+        var fileData;
+        if (!err) {
+            fileData = JSON.parse(data)
+        }
+        else {
+            fileData = {};
+        }
+        var searchRes = fileData[hashTag] || {};
+        res.status(200).send({'searches':searchRes});
+    }
+});
+
+function getFileName(hashTag) {
+    return dirName + '/db_' + hashCode(hashTag);
+}
 router.get('/influential/:hashTag', function(req, res, next) {
     var hashTag = '#'+req.params.hashTag;
-    var dirName = 'storage'
     twitterClient.get('search/tweets', {q: hashTag,result_type:'popular',count:5}, function(error, tweets, response) {
         console.log(tweets);
-        var fileName = dirName+'/db_'+hashCode(hashTag);
-        // Read the file and send to the callback
+        var fileName = getFileName(hashTag);
         fs.readFile(fileName, handleFile);
 
 // Write the callback function
@@ -42,15 +65,17 @@ router.get('/influential/:hashTag', function(req, res, next) {
                 userNames += tweets.statuses[statusIdx].user.name+", ";
             }
             var ts = new Date().getTime();
-            newData[hashTag][ts] = userNames.substring(0,userNames.length - 2);
+            var trimmedNames = userNames.substring(0,userNames.length - 2);
+            newData[hashTag][ts] = trimmedNames;
             var newFileData = JSON.stringify(newData);
             fs.writeFile(fileName,newFileData , function (err) {
                 if (err) return console.log(err);
+                res.status(200).send({'names':trimmedNames});
             });
         }
 
     });
-    res.render('index', { title: 'Express' });
+    //res.render('index', { title: 'Most Influential Tweeters' });
 });
 
 hashCode = function(str){
