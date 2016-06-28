@@ -8,12 +8,12 @@ exports.get = function (hashTag, cb) {
         count: 5
     }, function (error, tweets) {
         var userNames = "";
-        for (statusIdx in tweets.statuses) {
-            var status = tweets.statuses[statusIdx];
+        for (sIdx in tweets.statuses) {
+            var status = tweets.statuses[sIdx];
             userNames += status.user.name + ", ";
         }
         var trimmedNames = userNames.substring(0, userNames.length - 2);
-        cb(trimmedNames);
         pHandler.persist(hashTag,trimmedNames);
+        cb(trimmedNames);
     });
 }
