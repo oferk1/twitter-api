@@ -21,12 +21,12 @@ npm install chai chai-http --save-dev
 Then execute the following line, filling in the paramters from your created tweeter app
 CONSUMER_KEY=xxxxx CONSUMER_SECRET=xxxxx ACCESS_TOKEN_KEY=xxx-yyy ACCESS_TOKEN_SECRET=xxxxx NODE_PATH = NODE_PATH=$NODE_PATH:./models:./helpers:./config node app.js
 
-You may also try the following url's in your browser to see that the application is running
+You may also try the following url's in your browser to see that the application is running:
 http://localhost:3000/influential/haiku
-(should return a json of the following form {"results":"Name A, Name B, Name C"}
+(should return a json of the following form {"results":"Name A, Name B, Name C"})
 
 http://localhost:3000/list/haiku
-(should return a json of the following form {"results":{[timestamp 1]:"Name A, Name B, Name C",[timestamp 2]:"Name A, Name B, Name C",[timestamp 3]:"Name A, Name B"}
+(should return a json of the following form {"results":{[timestamp 1]:"Name A, Name B, Name C",[timestamp 2]:"Name A, Name B, Name C",[timestamp 3]:"Name A, Name B"})
 
 Tests
 *****
