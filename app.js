@@ -54,8 +54,8 @@ app.use(function(err, req, res, next) {
 });
 
 app.disable('etag');
-//
-// app.listen(3000, function () {
-//   console.log('Twitter APP EP listening !');
-// });
+
+app.listen(3000, function () {
+  console.log('Twitter APP EP listening !');
+});
 module.exports = app;

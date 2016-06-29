@@ -3,7 +3,6 @@ var chaiHttp = require('chai-http');
 var server = require('../app');
 var should = chai.should();
 var expect = chai.expect;
-var pHandler = require('persistenceHandler');
 var tHelp= require('twitterHelpers');
 
 chai.use(chaiHttp);
@@ -25,7 +24,7 @@ describe('getInfluentialTweeters', function () {
 });
 
 describe('countHashtagQueries', function () {
-    it('should list 2 queries of a fake hashtag x on /list/x GET', function (done) {
+    it('should create 2 queries of a fake hashtag x and then list them on /list/x GET', function (done) {
         var ts = new Date().getTime();
         var fakeHashTag = "test_api_ep_" + ts;
         var fileName = tHelp.getFileName(fakeHashTag);
