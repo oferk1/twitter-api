@@ -30,5 +30,5 @@ http://localhost:3000/list/haiku
 
 Tests
 *****
-To run the tests execute
+To execute the tests run
 CONSUMER_KEY=xxxxx CONSUMER_SECRET=xxxxx ACCESS_TOKEN_KEY=xxx-yyy ACCESS_TOKEN_SECRET=xxxxx NODE_PATH = NODE_PATH=$NODE_PATH:./models:./helpers:./config mocha
