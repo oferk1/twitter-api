@@ -19,7 +19,7 @@ npm install -g mocha
 npm install chai chai-http --save-dev
 
 Then execute the following line, filling in the paramters from your created tweeter app
-CONSUMER_KEY=xxxxx CONSUMER_SECRET=xxxxx ACCESS_TOKEN_KEY=xxx-yyy ACCESS_TOKEN_SECRET=xxxxx NODE_PATH = NODE_PATH=$NODE_PATH:./models:./helpers:./config node app.js
+CONSUMER_KEY=xxxxx CONSUMER_SECRET=xxxxx ACCESS_TOKEN_KEY=xxx-yyy ACCESS_TOKEN_SECRET=xxxxx NODE_PATH=$NODE_PATH:./models:./helpers:./config node app.js
 
 You may also try the following url's in your browser to see that the application is running:
 http://localhost:3000/influential/haiku
