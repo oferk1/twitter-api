@@ -10,7 +10,7 @@ chai.use(chaiHttp);
 describe('getInfluentialTweeters', function () {
 
     //Positive Test
-    it('should list TOP 5 influential tweeters of hashtag "tweeter" on /influential/tweeter GET', function (done) {
+    it('should list top influential tweeters of hashtag "tweeter" on /influential/tweeter GET', function (done) {
         var commonHashTag = "tweeter";
         chai.request(server)
             .get('/influential/' + commonHashTag)
