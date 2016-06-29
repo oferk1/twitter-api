@@ -14,9 +14,9 @@ Create a twitter app in https://apps.twitter.com/app/new and write down the foll
 CONSUMER_KEY, CONSUMER_SECRET,ACCESS_TOKEN_KEY, ACCESS_TOKEN_SECRET
 
 Run:
-npm install
-npm install -g mocha
-npm install chai chai-http --save-dev
+* npm install
+* npm install -g mocha
+* npm install chai chai-http --save-dev
 
 Then execute the following line, filling in the paramters from your created tweeter app
 CONSUMER_KEY=xxxxx CONSUMER_SECRET=xxxxx ACCESS_TOKEN_KEY=xxx-yyy ACCESS_TOKEN_SECRET=xxxxx NODE_PATH=$NODE_PATH:./models:./helpers:./config node app.js
