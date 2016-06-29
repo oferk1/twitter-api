@@ -1,4 +1,4 @@
 
 exports.storageFolderName = 'storage';
 exports.storageFilePrefix = 'db_';
-exports.maxStorageFiles = 100; //multiple of 10s
+exports.maxStorageFiles = 1000; //multiple of 10s

@@ -1,8 +1,8 @@
 var config = require('config');
-var tHelp= require('twitterHelpers');
+// var tHelp= require('twitterHelpers');
 
 exports.getFileName = function(hashTag) {
-    return config.storageFolderName + "/" + config.storageFilePrefix + tHelp.hashCode(hashTag);
+    return config.storageFolderName + "/" + config.storageFilePrefix + exports.hashCode(hashTag);
 }
 
 exports.hashCode = function(str){
