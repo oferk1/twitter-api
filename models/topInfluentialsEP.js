@@ -3,7 +3,7 @@ var pHandler = require('persistenceHandler');
 
 exports.get = function (hashTag, cb) {
     tHandler.client.get('search/tweets', {
-        q: hashTag,
+        q: "#"+hashTag,
         result_type: 'popular',
         count: 5
     }, function (error, tweets) {
