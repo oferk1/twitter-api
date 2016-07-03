@@ -10,6 +10,8 @@ chai.use(chaiHttp);
 describe('getInfluentialTweeters', function () {
 
     //Positive Test
+    //--------------
+    //Description: this test will make an api call to twitter and make sure results in the correct json format are returned
     it('should list TOP 5 influential tweeters of hashtag "tweeter" on /influential/tweeter GET', function (done) {
         var commonHashTag = "dog";
         chai.request(server)
@@ -26,6 +28,10 @@ describe('getInfluentialTweeters', function () {
     });
 
     // Negative Test
+    //---------------
+    //  Description: this test will make an api call to twitter of a tag that has no results at al ,and 
+    //  make sure results in the correct json format are returned
+
     it('should list NO influential tweeters of a fake hashtag on /influential/fakehashtag GET', function (done) {
         var ts = new Date().getTime();
         var fakeHashTag = "test_api_ep_" + ts;
@@ -46,6 +52,9 @@ describe('getInfluentialTweeters', function () {
 describe('countHashtagQueries', function () {
 
     // Positive Test
+    //---------------
+    //Description: this test will TWO consequential api calls to twitter, and then make a "list" api call 
+    //  in order the make sure that it returns the result of the two previous api calls.
     it('Should perform 2 synced queries, and then perform the list query and check that it contains both of them', function (done) {
         var ts = new Date().getTime();
         var fakeHashTag = "test_api_ep_" + ts;
@@ -71,6 +80,9 @@ describe('countHashtagQueries', function () {
     });
 
     // Negative Test
+    //---------------
+    //Description: this test will make a |list" api calls to twitter that is supposed to return no results
+    //  and then make sure the jsons are correct 
     it('should list NO queries on /list/fakeHashtag GET', function (done) {
         var ts = new Date().getTime();
         var fakeHashTag = "test_api_ep_" + ts;
