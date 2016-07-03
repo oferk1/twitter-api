@@ -46,10 +46,9 @@ describe('getInfluentialTweeters', function () {
 describe('countHashtagQueries', function () {
 
     // Positive Test
-    it('should create 2 queries of a fake hashtag x and then list them on /list/x GET', function (done) {
+    it('Should perform 2 synced queries, and then perform the list query and check that it contains both of them', function (done) {
         var ts = new Date().getTime();
         var fakeHashTag = "test_api_ep_" + ts;
-        var fileName = tHelp.getFileName(fakeHashTag);
         chai.request(server)
             .get('/influential/' + fakeHashTag)
             .end(function (err, res) {
@@ -75,7 +74,6 @@ describe('countHashtagQueries', function () {
     it('should list NO queries on /list/fakeHashtag GET', function (done) {
         var ts = new Date().getTime();
         var fakeHashTag = "test_api_ep_" + ts;
-        var fileName = tHelp.getFileName(fakeHashTag);
         chai.request(server)
             .get('/list/' + fakeHashTag)
             .end(function (err, res) {

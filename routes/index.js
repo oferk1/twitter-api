@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var topInfluentialsEP = require('topInfluentialsEP')
-var listQueriesEP = require('listQueriesEP')
+var topInfluentialsEP = require('../models/topInfluentialsEP.js')
+var listQueriesEP = require('../models/listQueriesEP')
 
 router.get('/list/:hashTag', function (req, res, next) {
     listQueriesEP.get(req.params.hashTag, function (searchRes) {

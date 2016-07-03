@@ -1,4 +1,4 @@
-var config = require('config');
+var config = require('../config/config');
 
 exports.getFileName = function(hashTag) {
     return config.storageFolderName + "/" + config.storageFilePrefix + exports.hashCode(hashTag);

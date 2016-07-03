@@ -1,5 +1,5 @@
 var fs = require('fs');
-var tHelp = require('twitterHelpers');
+var tHelp = require('../helpers/twitterHelpers');
 
 function getEmptyFileObject(fileData, fileName, key) {
     fileData = {};

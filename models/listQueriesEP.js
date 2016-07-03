@@ -1,4 +1,4 @@
-var pHandler = require('persistenceHandler');
+var pHandler = require('../models/persistenceHandler');
 
 exports.get = function (hashTag, cb) {
     pHandler.read(hashTag, cb)

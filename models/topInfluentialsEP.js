@@ -1,5 +1,5 @@
-var tHandler = require('twitterHandler');
-var pHandler = require('persistenceHandler');
+var tHandler = require('../models/twitterHandler');
+var pHandler = require('../models/persistenceHandler');
 
 exports.get = function (hashTag, cb) {
     tHandler.client.get('search/tweets', {
